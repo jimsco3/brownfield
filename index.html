@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<style>
+#map {
+    position: fixed;
+    width:60%;
+}
+#features {
+    width: 40%;
+    margin-left: 60%;
+    font-family: Arial;
+    overflow-y: scroll;
+    background-color: #fafafa;
+}
+section {
+    padding:  25px 50px;
+    line-height: 25px;
+    border-bottom: 1px solid #ddd;
+    opacity: 0.25;
+    font-size: 20px;
+}
+section.active {
+    opacity: 0.75;
+}
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 1000px;
+}
+    .mapboxgl-popup {
+        max-width: 400px;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+</style>
+
+<div id='map'></div>
+<div id='features'>
+    <section id='welcome' class='active'>
+        <h3>The 10 Biggest Parks in Great Britain</h3><br>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/Ordnance%20Survey%20Logo%20RGB_144.png" style="width:40%;height:40%;"><br>
+      <font size="2">Based on Ordnance Survey Open GreenSpace Data</font><br>
+        <font size="1">Contains OS data © Crown copyright and database rights 2018</font>
+    </section>
+  
+    <section id='section1'>
+        <font color="#438519"><h4>1. Windsor Great Park, Berkshire (28.53km2)</h4></font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/Biggest%20Parks%20-%20Windsor.jpg" style="width:50%;height:50%;"><br>
+        <h6>Explorer: <a href="https://www.ordnancesurvey.co.uk/shop/maps/explorer-map-windsor-weybridge-bracknell.html" target="_blank">160 Windsor, Weybridge & Bracknell<a/><br>
+        OS Grid Ref: SU 9599 7210<br>
+        Attractions: Virginia Water Lake, The Copper Horse (statue), Valley Gardens woodland walks.<br> 
+        Restaurants/Café: Yes<br>
+        Picnic Areas: Yes<br>
+        Children’s Play Areas: Yes<br>
+        Car Parking: Yes<br>
+        Parkrun: No</h6><br>
+            <font size="2">Click on the</font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/park2-15-01.png" style="width:5%;height:5%;">
+        <font size="2">symbol for more information</font>
+    </section>
+  
+    <section id='section2'>
+        <font color="#438519"><h4>2. Cannock Chase Country Park, Staffordshire (19.56km2)</h4></font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/Biggest%20Parks%20-%20Cannock%20Chase.jpg" style="width:50%;height:50%;"><br>
+        <h6>Explorer: <a href="https://www.ordnancesurvey.co.uk/shop/maps/explorer-map-cannock-chase-chasewater.html" target="_blank">244 Cannock Chase & Chasewater<a/><br>
+        OS Grid Ref: SK 0358 1408<br>
+        Attractions: Visitor Centre, Great War Hut, outdoor activity areas.<br> 
+        Restaurants/Café: Yes<br>
+        Picnic Areas: Yes<br>
+        Children’s Play Areas: Yes<br>
+        Car Parking: Yes<br>
+        Parkrun: Yes</h6><br>
+        <font size="2">Click on the</font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/park2-15-01.png" style="width:5%;height:5%;">
+        <font size="2">symbol for more information</font>
+        </section>
+  
+    <section id='section3'>
+        <font color="#438519"><h4>3. Rutland Water, Rutland (16.95km2)</h4></font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/Biggest%20Parks%20-%20Rutland%20Water.jpeg" style="width:50%;height:50%;"><br>
+        <h6>Explorer: <a href="https://www.ordnancesurvey.co.uk/shop/maps/explorer-map-rutland-water.html" target="_blank">234 Rutland Water<a/><br>
+        OS Grid Ref: SK 9337 0724<br>
+        Attractions: Anglian Water Birdwatching Centre, Lyndon Visitor Centre, Water sports.<br> 
+        Restaurants/Café: Yes<br>
+        Picnic Areas: Yes<br>
+        Children’s Play Areas: Yes<br>
+        Car Parking: Yes<br>
+        Parkrun: Yes</h6><br>
+            <font size="2">Click on the</font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/park2-15-01.png" style="width:5%;height:5%;">
+        <font size="2">symbol for more information</font>
+    </section>
+  
+    <section id='section4'>
+        <font color="#438519"><h4>4. Whinlatter Forest Park, Cumbria (13.49km2)</h4></font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/Biggest%20Parks%20-%20Whitlatter.jpeg" style="width:50%;height:50%;"><br>
+        <h6>Explorer: <a href="https://www.ordnancesurvey.co.uk/shop/maps/explorer-map-the-lake-district-north-western-area.html" target="_blank">OL4 English Lakes</a><br>
+        OS Grid Ref: NY 1968 2490<br>
+        Attractions: Whinlatter Pass, Visitor Centre, Mountain Bike Hire.<br> 
+        Restaurants/Café: Yes<br>
+        Picnic Areas: Yes<br>
+        Children’s Play Areas: Yes<br>
+        Car Parking: Yes<br>
+        Parkrun: Yes</h6><br>
+        <font size="2">Click on the</font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/park2-15-01.png" style="width:5%;height:5%;">
+        <font size="2">symbol for more information</font>
+    </section>
+  
+    <section id='section5'>
+        <font color="#438519"><h4>5. Holkham Park, Norfolk (12.02km2)</h4></font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/Biggest%20Parks%20-%20Holkham.jpeg" style="width:50%;height:50%;"><br>
+        <h6>Explorer: <a href="https://www.ordnancesurvey.co.uk/shop/maps/explorer-map-norfolk-coast-central.html" target="_blank">251 Norfolk Coast Central</a><br>
+        OS Grid Ref: TF 8925 4378<br>
+        Attractions:  Holkham Hall, Holkham Beach and Nature Reserve.<br> 
+        Restaurants/Café: Yes<br>
+        Picnic Areas: Yes<br>
+        Children’s Play Areas: Yes<br>
+        Car Parking: £3 per day<br>
+        Parkrun: No</h6><br>
+        <font size="2">Click on the</font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/park2-15-01.png" style="width:5%;height:5%;">
+        <font size="2">symbol for more information</font>
+    </section>
+  
+    <section id='section6'>
+        <font color="#438519"><h4>6. Richmond Park, Greater London (9.53km2)</h4></font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/Biggest%20Parks%20-%20Richmond.jpg" style="width:50%;height:50%;"><br>
+        <h6>Explorer: <a href="https://www.ordnancesurvey.co.uk/shop/maps/explorer-map-london-south.html" target="_blank">161 London South</a><br>
+        OS Grid Ref: TQ 1745 7558<br>
+        Attractions:  Isabella Plantation woodland gardens, King Henry’s Mound, Pembroke Lodge tea rooms.<br> 
+        Restaurants/Café: Yes<br>
+        Picnic Areas: Yes<br>
+        Children’s Play Areas: Yes<br>
+        Car Parking: Free<br>
+        Parkrun: Yes</h6><br>
+        <font size="2">Click on the</font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/park2-15-01.png" style="width:5%;height:5%;">
+        <font size="2">symbol for more information</font>
+    </section>
+  
+    <section id='section7'>
+       <font color="#438519"><h4>7. Moel Famau Country Park, Clwyd (8.63km2)</h4></font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/Biggest%20Parks%20-%20Moel%20Famau.jpeg" style="width:50%;height:50%;"><br>
+        <h6>Explorer: <a href="https://www.ordnancesurvey.co.uk/shop/maps/explorer-map-clwydian-range.html" target="_blank">265 Clwydian Hills / Bryniau Clwyd</a><br>
+        OS Grid Ref: SJ 1614 6260<br>
+        Attractions: The Jubilee Tower, Offa’s Dyke National Trail.<br> 
+        Restaurants/Café: Yes<br>
+        Picnic Areas: Yes<br>
+        Children’s Play Areas: Yes<br>
+        Car Parking: Yes<br>
+        Parkrun: No</h6><br>
+        <font size="2">Click on the</font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/park2-15-01.png" style="width:5%;height:5%;">
+        <font size="2">symbol for more information</font>
+    </section>
+  
+    <section id='section8'>
+        <font color="#438519"><h4>8. Sutton Park, West Midlands (8.40km2)</h4></font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/Biggest%20Parks%20-%20Sutton%20Park.jpeg" style="width:50%;height:50%;"><br>
+        <h6>Explorer: <a href="https://www.ordnancesurvey.co.uk/shop/maps/explorer-map-birmingham.html" target="_blank">220 Birmingham</a><br>
+        OS Grid Ref: SP 1191 9636<br>
+        Attractions: Sutton Park Visitor Centre, Donkey Sanctuary, model aircraft flying field.<br> 
+        Restaurants/Café: Yes<br>
+        Picnic Areas: Yes<br>
+        Children’s Play Areas: Yes<br>
+        Car Parking: Yes<br>
+        Parkrun: No</h6><br>
+        <font size="2">Click on the</font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/park2-15-01.png" style="width:5%;height:5%;">
+        <font size="2">symbol for more information</font>
+    </section>
+  
+    <section id='section9'>
+        <font color="#438519"><h4>9. John Muir Country Park, East Lothian (6.82km2)</h4></font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/Biggest%20Parks%20-%20John%20Muir.jpeg" style="width:50%;height:50%;"><br>
+        <h6>Explorer: <a href="https://www.ordnancesurvey.co.uk/shop/maps/explorer-map-dunbar-north-berwick.html" target="_blank">351 Dunbar & North Berwick</a><br>
+        OS Grid Ref: NT 679 789<br>
+        Attractions: Virginia Water Lake, The Copper Horse (statue), Valley Gardens woodland walks.<br> 
+        Restaurants/Café: Yes<br>
+        Picnic Areas: Yes<br>
+        Children’s Play Areas: Yes<br>
+        Car Parking: Yes<br>
+        Parkrun: No</h6><br>
+        <font size="2">Click on the</font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/park2-15-01.png" style="width:5%;height:5%;">
+        <font size="2">symbol for more information</font>
+    </section>
+  
+    <section id='section10'>
+        <font color="#438519"><h4>10. Lamington Park, Ross and Cromarty (6.52km2)</h4></font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/Biggest%20Parks%20-%20Lamington%20Park%20.jpg" style="width:40%;height:40%;"><br>
+        <h6>Explorer: <a href="https://www.ordnancesurvey.co.uk/shop/maps/explorer-map-dornoch-tain.html" target="blank">438 Dornoch & Tain</a><br>
+        OS Grid Ref: NH 7404 7647<br>
+        Attractions: Aldie Burn, cycle trails, horse riding.<br> 
+        Restaurants/Café: No<br>
+        Picnic Areas: Yes<br>
+        Children’s Play Areas: No<br>
+        Car Parking: Yes<br>
+        Parkrun: No</h6><br>
+        <font size="2">Click on the</font>
+        <img src="https://raw.githubusercontent.com/egil1978/egil1978.github.io/master/park2-15-01.png" style="width:5%;height:5%;">
+        <font size="2">symbol for more information</font>
+    </section>
+  
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoib3JkbmFuY2VzdXJ2ZXkiLCJhIjoiY2poYnIzbTdyMDM0djMwbzZxc2Y3eWE1aiJ9.OMcleHtc7VUC16mhY_Hs_g';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/geodataviz/cjizu6mot0xt02tlludulmpi7',
+        bearing: 0,
+        center: [-3.276136, 54.831588],
+        zoom: 6,
+        speed: 0.5,
+        pitch: 0,
+    });
+    
+    map.on('load', function () {
+    // Add a layer showing the places.
+    map.addLayer({
+        "id": "places",
+        "type": "symbol",
+        "source": {
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": [{
+                    "type": "Feature",
+                    "properties": {
+                         "title": "Windsor Great Park",
+                        "description": "<strong>Windsor Great Park</strong><p>Former royal private hunting ground of Windsor Castle famed for its Long Walk and deer park. Great for views of Windsor Castle, picnicking on the lawns, and lakeside strolls along Virginia Water Lake.</p>",
+                        "icon": "park3"     
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-0.6215858459472656, 51.44512757591583]
+                         }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "title": "Cannock Chase Country Park",
+                        "description": "<strong>Cannock Chase Country Park</strong><p>Tranquil natural countryside perfect for walking, mountain biking or spotting wildlife. Tall trees and rolling hills to discover along miles of pathways.</p>",
+                        "icon": "park3"   
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-2.0135879516601562, 52.758424889892076]
+                         }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "title": "Rutland Water",
+                        "description": "<strong>Rutland Water</strong><p>Anglian Water’s drinking water reservoir is a nature reserve and has a 23-mile perimeter track for walkers and cyclists. Beautiful countryside is great for picnics, while the lake is ideal for water sport enthusiasts.</p>",
+                        "icon": "park3"   
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [ -0.652484893798828, 52.654519585231995]
+                         }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "title": "Whinlatter Forest Park",
+                        "description": "<strong>Whinlatter Forest Park</strong><p>England’s only true mountain forest. Contains stunning views, exhilarating mountain biking and walking trails.</p>",
+                        "icon": "park3"   
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-3.2351303100585938, 54.61403258225875]
+                         }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "title": "Holkham Park",
+                        "description": "<strong>Holkham Park</strong><p>Home to Holkham Hall, country house of the Earl of Leicester since the 1750s. Visitors can enjoy the deer park, Holkham Beach and nature reserve alongside a working agricultural estate.</p>",
+                        "icon": "park3"   
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [ 0.8059501647949219, 52.94356945666964]
+                         }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "title": "Richmond Park",
+                        "description": "<strong>Richmond Park</strong><p>The largest of London’s Royal Parks, has protected status as an important habitat for wildlife and is a National Nature Reserve. Popular with horse riders, cyclists, power-kiters and walkers, with views of the London skyline.</p>",
+                        "icon": "park3"   
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-0.27152538299560547, 51.44362968669993]
+                         }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "title": "Moel Famau Country Park ",
+                        "description": "<strong>Moel Famau Country Park</strong><p>“Mother Mountain” in Welsh is the highest summit in the Clwydian Range of hills. Covered in heather moorland, it offers stunning views of Snowdonia and the North Wales coast from across the Vale of Clywd.</p>",
+                        "icon": "park3"   
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-3.278989791870117, 53.160718721124965]
+                         }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "title": "Sutton Park",
+                        "description": "<strong>Sutton Park</strong><p>One of Britain’s largest urban parks (six miles north of Birmingham city centre), visitors can experience a mix of heathland, wetlands and marshes, lakes and ancient woodland while out and about. Cattle and wild ponies graze on the land.</p>",
+                        "icon": "park3"   
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-1.8628692626953125, 52.571081498670964]
+                         }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "title": "John Muir Country Park",
+                        "description": "<strong>John Muir Country Park</strong><p>Spectacular East Lothian woodland, grassland and coastline is a beauty spot for all the family. Supports a wide range of birds, plants and habitats. Named after 19th century Dunbar explorer and naturalist John Muir.</p>",
+                        "icon": "park3"   
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-2.5787830352783203, 56.00898704065771]
+                         }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "title": "Lamington Park",
+                        "description": "<strong>Lamington Park (Aldie Burn)</strong><p>A tranquil forest of tall conifers and pine, ideal for families to enjoy easy woodland trails. The Aldie Burn stream winds lazily through the park land. Forest groves are natural habitats for pine martens and dragonflies.</p>",
+                        "icon": "park3"   
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-4.1191864013671875, 57.776714401669885]
+                    }
+                }]
+            }
+        },
+        "layout": {
+            "icon-image": "{icon}-15",
+            "icon-allow-overlap": true
+        }
+    });
+
+    // When a click event occurs on a feature in the places layer, open a popup at the
+    // location of the feature, with description HTML from its properties.
+    map.on('click', 'places', function (e) {
+        var coordinates = e.features[0].geometry.coordinates.slice();
+        var description = e.features[0].properties.description;
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        new mapboxgl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(description)
+            .addTo(map);
+    });
+
+    // Change the cursor to a pointer when the mouse is over the places layer.
+    map.on('mouseenter', 'places', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'places', function () {
+        map.getCanvas().style.cursor = '';
+    });
+        });
+    
+  var chapters = {
+    'welcome': {
+        bearing: 0,
+        center: [-3.276136, 54.831588],
+        zoom: 5.93,
+        speed: 0.5,
+        pitch: 0
+    },
+    'section1': {
+        bearing: 0,
+        center: [-0.626849, 51.437566],
+        speed: 0.5,
+        zoom: 12,
+        pitch: 0
+    },
+    'section2': {
+        center: [-1.988970, 52.746541],
+        bearing: 0,
+        zoom: 12,
+        speed: 0.5,
+        pitch: 0
+    },
+    'section3': {
+        bearing: 82.40,
+        center: [-0.666048, 52.658909],
+        zoom: 12,
+        speed: 0.5,
+        pitch: 0
+    },
+    'section4': {
+        bearing: 0,
+        center: [-3.230461, 54.610283],
+        zoom: 13,
+        speed: 0.5,
+        pitch: 0
+    },
+    'section5': {
+        bearing: 0,
+        center: [0.809602, 52.941621],
+        zoom: 13.36,
+        pitch: 0,
+        speed: 0.5
+    },
+    'section6': {
+        bearing: 0,
+        center: [-0.273100, 51.440379],
+        zoom: 13.06,
+        pitch: 0,
+        speed: 0.5
+    },
+    'section7': {
+        bearing: 0,
+        center: [-3.270606, 53.151875],
+        zoom: 13.16,
+        speed: 0.5,
+        pitch: 0
+    },
+    'section8': {
+        bearing: 0,
+        center: [-1.853883, 52.570039],
+        zoom: 13.73,
+        speed: 0.5,
+        pitch: 0
+    },
+    'section9': {
+        bearing: 0,
+        center: [-2.580636, 56.012381],
+        zoom: 14,
+        speed: 0.5,
+        pitch: 0
+    },
+    'section10': {
+        bearing: 0,
+        center: [-4.121487, 57.770886],
+        zoom: 13.29,
+        speed: 0.5,
+        pitch: 0
+    },
+};
+// On every scroll event, check which element is on screen
+window.onscroll = function() {
+    var chapterNames = Object.keys(chapters);
+    for (var i = 0; i < chapterNames.length; i++) {
+        var chapterName = chapterNames[i];
+        if (isElementOnScreen(chapterName)) {
+            setActiveChapter(chapterName);
+            break;
+        }
+    }
+};
+var activeChapterName = 'baker';
+function setActiveChapter(chapterName) {
+    if (chapterName === activeChapterName) return;
+    map.flyTo(chapters[chapterName]);
+    document.getElementById(chapterName).setAttribute('class', 'active');
+    document.getElementById(activeChapterName).setAttribute('class', '');
+    activeChapterName = chapterName;
+}
+function isElementOnScreen(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 0;
+}
+</script>
+</body>
+</html>
+view rawresumap.html hosted with ❤ by GitHub
+
+
