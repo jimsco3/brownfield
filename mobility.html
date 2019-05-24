@@ -161,7 +161,7 @@ test_geojson = L.geoJSON(taxi, {onEachFeature: onEachFeature
 	});
 	
 	function onEachFeature(feature, layer) 
-		{layer.bindPopup("<b>ID: </b>" + feature.properties.id + "<br><br><b>Description: </b>" + feature.properties.desc + "<br><br><a href=photos/" + feature.properties.id + ".jpeg target='_blank'><img src=photos/" + feature.properties.id + ".jpeg width='50%' height='50%'>");}
+		{layer.bindPopup("<b>ID: </b>" + feature.properties.id + "<br><br><b>Description: </b>" + feature.properties.desc + "<br><br><a href=photos/" + feature.properties.id + ".jpeg target='_blank'><img src=" + feature.properties.id + ".jpeg width='50%' height='50%'>");}
 		
 
 		
