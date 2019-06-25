@@ -26,22 +26,14 @@
 			var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
 				streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
 	
+			var test = new L.GeoJSON.AJAX("boundary.geojson"); 
+			
 			var mymap = L.map('mapid', {
 			center: [53.390784,-2.119261],
 			zoom: 12,
-			layers:[streets]
+			layers:[streets,test]
 			});	
 			
-			var baseLayers = {
-				"Streets": streets,
-				"Grayscale": grayscale
-				
-			};
-			
-			L.control.layers(baseLayers).addTo(mymap)
-			
-			var geojsonLayer = new L.GeoJSON.AJAX("boundary.geojson");       
-			geojsonLayer.addTo(map);
 
 		</script>
 	
