@@ -39,6 +39,9 @@
 			};
 			
 			L.control.layers(baseLayers).addTo(mymap)
+			
+			var geojsonLayer = new L.GeoJSON.AJAX("boundary.geojson");       
+			geojsonLayer.addTo(map);
 
 		</script>
 	
